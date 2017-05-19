@@ -26,7 +26,7 @@ int mainMenu()
 	int choice;
 
 	cout << "*****************************************" << endl;
-	cout << "Secrendipity Booksellers" << endl;
+	cout << " Booksellers" << endl;
 	cout << "       Main Menu        " << endl << endl;
 	cout << "1. Cashier Module" << endl;
 	cout << "2. Inventory Database Module" << endl;
