@@ -564,7 +564,7 @@ int PriorityQueue<T>::mergeSort(PriorityQueue<T>& S, int iterator_count)
 
     iterator_count = mergeSort(S2, iterator_count); // recur on second half
 
-    S.clear(); // clear S¡¯s contents
+    S.clear(); // clear SÂ¡Â¯s contents
     merge(S1, S2, S); // merge S1 and S2 into S
 
     //cout << "show result: \n";  S.showList(true); system("pause");
@@ -640,7 +640,7 @@ int PriorityQueue<T>::quickSort(PriorityQueue<T>& S, int iterator_count = 0)
     PriorityQueue<T> SL, SE, SG;
 
     // Delcare pivot
-    //Node<T> * nodePtrPivot = S.rear; // Choose the last node to be pivot can increase running times if the linked list already sorted.
+    //Node<T> * nodePtrPivot = S.rear; // Because it is not stable sort, so choose the last node to be pivot can increase running times if the linked list already sorted.
     Node<T> * nodePtrPivot = S.front;
     for (int x = 0; x < half; x++)
     {
