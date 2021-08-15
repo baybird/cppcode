@@ -23,8 +23,8 @@ using namespace std;
 //  Student: Robert Tang
 ///////////////////////////////////////////////////////////
 
-#ifndef _CIS22C_LINKEDLIST
-#define _CIS22C_LINKEDLIST
+#ifndef _LINKEDLIST
+#define _LINKEDLIST
 
 // definition begin **********************************************************************************
 // Node class
@@ -435,7 +435,7 @@ void main()
 {
     // Show welcome message
     cout << "****************************************************************************" << endl;
-    cout << "*                  Welcome to CIS22C-Lab 1                                 *" << endl;
+    cout << "*                  Welcome to Lab 1                                 *" << endl;
     cout << "*                     Student: Robert Tang                                     *" << endl;
     cout << "*                                                                          *" << endl;
     cout << "*   This program will demonstrate followings:                              *" << endl;

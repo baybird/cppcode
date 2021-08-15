@@ -14,8 +14,8 @@
 
 // #include "Hashing.h"
 
-#ifndef _CIS22C_HASHING
-#define _CIS22C_HASHING
+#ifndef _HASHING
+#define _HASHING
 
 #include <iostream>
 using namespace std;

@@ -6,8 +6,8 @@
 
 using namespace std;
 
-#ifndef _CIS22C_BLOOMFILTER
-#define _CIS22C_BLOOMFILTER
+#ifndef _BLOOMFILTER
+#define _BLOOMFILTER
 
 // definition begin **********************************************************************************
 template <class K>
@@ -39,7 +39,7 @@ public:
     void menu()
     {
         cout << "************************************************************************************************" << endl;
-        cout << "*                         Welcome to CIS22C-Group Project                                      *" << endl;
+        cout << "*                         Welcome to Group Project                                      *" << endl;
         cout << "*                                 Student: Robert Tang                                             *" << endl;
         cout << "*                  Group: Soham Pardeshi, Ben Fong, Samantha Seymour                           *" << endl;
         cout << "*                                                                                              *" << endl;

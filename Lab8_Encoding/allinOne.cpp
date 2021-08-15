@@ -1286,7 +1286,7 @@ public:
 void menu()
 {
     cout << "************************************************************************************************" << endl;
-    cout << "*                            CIS22C-Lab 8 - Encoding                                           *" << endl;
+    cout << "*                            Lab 8 - Encoding                                           *" << endl;
     cout << "*                                 Student: Robert Tang                                             *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate:                                                               *" << endl;

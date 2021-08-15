@@ -145,7 +145,7 @@ using namespace std;
 void menu()
 {
     cout << "************************************************************************************************" << endl;
-    cout << "*                            CIS22C-Lab 9 - Graphing                                           *" << endl;
+    cout << "*                            Lab 9 - Graphing                                           *" << endl;
     cout << "*                                 Student: Robert Tang                                             *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate:                                                               *" << endl;

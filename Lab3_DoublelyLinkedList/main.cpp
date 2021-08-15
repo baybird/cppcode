@@ -16,8 +16,8 @@
 
 using namespace std;
 
-#ifndef _CIS22C_DOUBLY_LINKEDLIST
-#define _CIS22C_DOUBLY_LINKEDLIST
+#ifndef _DOUBLY_LINKEDLIST
+#define _DOUBLY_LINKEDLIST
 
 #include <iostream>
 
@@ -816,7 +816,7 @@ void testImportDataFile()
 void menu()
 {
     cout << "************************************************************************************************" << endl;
-    cout << "*                              Welcome to CIS22C-Lab 3                                         *" << endl;
+    cout << "*                              Welcome to Lab 3                                         *" << endl;
     cout << "*                                 Student: Robert Tang                                             *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate:                                                               *" << endl;

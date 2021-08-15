@@ -12,8 +12,8 @@
 
 using namespace std;
 
-#ifndef _CIS22C_MIDTERM
-#define _CIS22C_MIDTERM
+#ifndef _MIDTERM
+#define _MIDTERM
 
 // definition begin **********************************************************************************
 // Node class

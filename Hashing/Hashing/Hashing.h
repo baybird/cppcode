@@ -6,8 +6,8 @@
 
 using namespace std;
 
-#ifndef _CIS22C_HASHING
-#define _CIS22C_HASHING
+#ifndef _HASHING
+#define _HASHING
 
 // definition begin **********************************************************************************
 // Node class
@@ -74,7 +74,7 @@ public:
     void menu()
     {
         cout << "************************************************************************************************" << endl;
-        cout << "*                              Welcome to CIS22C-Group Project                                 *" << endl;
+        cout << "*                              Welcome to Group Project                                 *" << endl;
         cout << "*                                 Student: Robert Tang                                             *" << endl;
         cout << "*                  Group: Soham Pardeshi, Ben Fong, Samantha Seymour                           *" << endl;
         cout << "*                                                                                              *" << endl;

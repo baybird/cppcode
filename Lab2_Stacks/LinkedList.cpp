@@ -5,8 +5,8 @@
 //  Student: Robert Tang
 ///////////////////////////////////////////////////////////
 
-#ifndef _CIS22C_LINKEDLIST
-#define _CIS22C_LINKEDLIST
+#ifndef _LINKEDLIST
+#define _LINKEDLIST
 
 // definition begin **********************************************************************************
 // Node class

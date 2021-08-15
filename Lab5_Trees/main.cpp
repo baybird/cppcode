@@ -20,7 +20,7 @@ using namespace std;
 void menu()
 {
     cout << "************************************************************************************************" << endl;
-    cout << "*                              Welcome to CIS22C-Lab 5                                         *" << endl;
+    cout << "*                              Welcome to Lab 5                                         *" << endl;
     cout << "*                                 Student: Robert Tang                                             *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate:                                                               *" << endl;

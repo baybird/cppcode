@@ -14,8 +14,8 @@
 
 using namespace std;
 
-#ifndef _CIS22C_DOUBLY_PriorityQueue
-#define _CIS22C_DOUBLY_PriorityQueue
+#ifndef _DOUBLY_PriorityQueue
+#define _DOUBLY_PriorityQueue
 
 //#include <iostream>
 
@@ -722,7 +722,7 @@ int PriorityQueue<T>::quickSort(PriorityQueue<T> &S, int iterator_count = 0)
 void menu()
 {
     cout << "************************************************************************************************" << endl;
-    cout << "*                              Welcome to CIS22C-Lab 4                                         *" << endl;
+    cout << "*                              Welcome to Lab 4                                         *" << endl;
     cout << "*                                 Student: Robert Tang                                             *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate:                                                               *" << endl;

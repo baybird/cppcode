@@ -16,8 +16,8 @@
 
 using namespace std;
 
-#ifndef _CIS22C_STACK
-#define _CIS22C_STACK
+#ifndef _STACK
+#define _STACK
 
 // definition begin **********************************************************************************
 class StackException
@@ -512,7 +512,7 @@ void main()
 {
     // Show welcome message
     cout << "****************************************************************************" << endl;
-    cout << "*                  Welcome to CIS22C-Lab 2                                 *" << endl;
+    cout << "*                  Welcome to Lab 2                                 *" << endl;
     cout << "*                     Student: Robert Tang                                     *" << endl;
     cout << "*                                                                          *" << endl;
     cout << "*   This program will demonstrate using a stack to evaluate an expression. *" << endl;
