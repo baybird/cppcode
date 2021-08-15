@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////
 //  Main.cpp
-//  CIS22C - Lab 8
-//  Created on: 3/11/2017 
-//  Student: Xu Tang
+//  Lab 8
+//  Created on: 3/11/2017
+//  Student: Robert Tang
 //  IDE: Visual Studio 2013
 ///////////////////////////////////////////////////////////
 
@@ -30,10 +30,10 @@ public:
     }
 };
 
-class Derived :public Base
+class Derived : public Base
 {
 public:
-    void show() 
+    void show()
     {
         cout << "Derived Class\n";
         this->name();
@@ -45,20 +45,21 @@ public:
     }
 };
 
-
-template<class T>
-class Solution {
-    
+template <class T>
+class Solution
+{
 
 public:
-    TreeNode<T>  * root = nullptr;
+    TreeNode<T> *root = nullptr;
 
-    TreeNode<T> * invertTree(TreeNode<T> * root) {
-        if (root){
+    TreeNode<T> *invertTree(TreeNode<T> *root)
+    {
+        if (root)
+        {
             invertTree(root->left);
             invertTree(root->right);
 
-            TreeNode<T>  * temp = root->left;
+            TreeNode<T> *temp = root->left;
             root->left = root->right;
             root->right = temp;
         }
@@ -66,20 +67,23 @@ public:
         return root;
     }
 
-    TreeNode<T> * invertTree2(TreeNode<T> * root) {
-        if (root->left != NULL){
+    TreeNode<T> *invertTree2(TreeNode<T> *root)
+    {
+        if (root->left != NULL)
+        {
             invertTree(root->left);
             invertTree(root->right);
         }
 
-        TreeNode<T>  * temp = root->left;
+        TreeNode<T> *temp = root->left;
         root->left = root->right;
         root->right = temp;
 
         return root;
     }
 
-    void createTree(){
+    void createTree()
+    {
         root = new TreeNode<T>(4);
         root->left = new TreeNode<T>(2);
         root->right = new TreeNode<T>(7);
@@ -101,7 +105,7 @@ public:
         }
     }
 
-    void inOrder(TreeNode<T> * TreeNodePtr, int level = 0)
+    void inOrder(TreeNode<T> *TreeNodePtr, int level = 0)
     {
         if (TreeNodePtr != NULL)
         {
@@ -124,11 +128,9 @@ void main()
     tree.inOrder(tree.root);
 
     Derived a;
-    a.show(); 
+    a.show();
     system("pause");
-
 
     cout << "Going to close application. ";
     system("pause");
 }
-

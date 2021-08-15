@@ -11,16 +11,17 @@ using namespace std;
 
 // definition begin **********************************************************************************
 template <class K>
-class BloomFilter {
+class BloomFilter
+{
 private:
-    bool *table;            // bucket array
+    bool *table; // bucket array
     int n = 69903;
-    int k = 3;              // number of hash functions
+    int k = 3; // number of hash functions
     const int m = n * k;
 
     int num; // number of entries
 public:
-    BloomFilter()    // constructor
+    BloomFilter() // constructor
     {
         table = new bool[m];
 
@@ -39,7 +40,7 @@ public:
     {
         cout << "************************************************************************************************" << endl;
         cout << "*                         Welcome to CIS22C-Group Project                                      *" << endl;
-        cout << "*                                 Student: Xu Tang                                             *" << endl;
+        cout << "*                                 Student: Robert Tang                                             *" << endl;
         cout << "*                  Group: Soham Pardeshi, Ben Fong, Samantha Seymour                           *" << endl;
         cout << "*                                                                                              *" << endl;
         cout << "* This program will demonstrate:                                                               *" << endl;
@@ -127,16 +128,16 @@ public:
         } while (exit != true);
     }
 
-    void add(K key) // insert 
+    void add(K key) // insert
     {
         unsigned int hash1 = hashFunc1(key);
         unsigned int hash2 = hashFunc2(key);
         unsigned int hash3 = hashFunc3(key);
 
-        //cout << "hash: " 
-        //    << setw(20) << hash1 
-        //    << setw(20) << hash2 
-        //    << setw(20) << hash3 
+        //cout << "hash: "
+        //    << setw(20) << hash1
+        //    << setw(20) << hash2
+        //    << setw(20) << hash3
         //    << endl; system("pause");
 
         table[hash1] = 1;
@@ -144,7 +145,7 @@ public:
         table[hash3] = 1;
     }
 
-    bool contains(K key)               // find entry with key k
+    bool contains(K key) // find entry with key k
     {
         unsigned int hash1 = hashFunc1(key);
         unsigned int hash2 = hashFunc2(key);
@@ -161,9 +162,7 @@ public:
         }
     }
 
-
-
-    int hashFunc(K& k) // hash function
+    int hashFunc(K &k) // hash function
     {
         int sum = 0;
         int len = k.length();
@@ -183,17 +182,17 @@ public:
         return (sum % m);
     }
 
-    int hashFunc1(string k) 
+    int hashFunc1(string k)
     {
-        unsigned int seed = 7; 
+        unsigned int seed = 7;
         unsigned int hash = 131;
         unsigned int i = 0;
         unsigned int len = k.length();
-        const char * str = k.c_str();
+        const char *str = k.c_str();
 
         for (i = 0; i < len; str++, i++)
         {
-            
+
             hash = (hash * seed) + (*str);
             seed *= 7;
 
@@ -204,7 +203,6 @@ public:
         return hash % m;
     }
 
-
     int hashFunc2(string k) // hash function
     {
         unsigned int b = 378551;
@@ -212,17 +210,18 @@ public:
         unsigned int hash = 0;
         unsigned int i = 0;
         unsigned int len = k.length();
-        const char * str = k.c_str();
+        const char *str = k.c_str();
 
-        for (i = 0; i<len; str++, i++) {
+        for (i = 0; i < len; str++, i++)
+        {
             hash = hash * a + (*str);
-            a = a*b;
+            a = a * b;
         }
 
         return hash % m;
     }
 
-    int hashFunc3(K& str)
+    int hashFunc3(K &str)
     {
         unsigned int len = str.length();
         unsigned int hash = 5381;
@@ -235,9 +234,8 @@ public:
 
         return hash % m;
     }
-    
 
-    void display()              // Print hash table
+    void display() // Print hash table
     {
         int used = 0;
 
@@ -254,23 +252,22 @@ public:
         cout << used << " of " << m << " used. " << endl;
     }
 
-    int size() const               // number of entries
+    int size() const // number of entries
     {
         return num;
     }
 
-    bool empty() const             // is the map empty
+    bool empty() const // is the map empty
     {
         return num == 0;
     }
 
-    void clear()                    // clear hash table
+    void clear() // clear hash table
     {
         for (int i = 0; i < m; i++)
         {
         }
     }
-
 
     int string2ascii(string str)
     {
@@ -296,11 +293,10 @@ public:
             str.erase(p + 1);
         }
 
-
         return str;
     }
 
-    string* csv2arr(string line)
+    string *csv2arr(string line)
     {
         char delimiter = ',';
         const int SIZE = 2;
@@ -321,7 +317,7 @@ public:
     void importDataFile(string file)
     {
         fstream datafile;
-        string line;// *item;
+        string line; // *item;
         int TITLE_INDEX = 0, VALUE_INDEX = 1;
         int progress = 0;
 
@@ -345,12 +341,12 @@ public:
                 add(line);
                 //cout << item[0] << "\t" << v << endl;
                 num++;
-                
+
                 if (num % (n / 100) == 0)
                 {
                     progress++;
                     cout << "\r" << progress << "% - " << num; //system("pause");
-                }                
+                }
             }
 
             cout << "\r " << num << " words imported." << endl; //system("pause");
@@ -385,24 +381,21 @@ public:
                 if (this->contains(line))
                 {
                     result = "found";
-                    
                 }
                 else
                 {
-                    result = "not found";  
+                    result = "not found";
                     errorNum++;
                     //system("pause");
                 }
 
                 row++;
 
-                cout << setw(30) << left << line << setw(20) << result  << endl;
+                cout << setw(30) << left << line << setw(20) << result << endl;
             }
 
             cout << "Total errors: " << errorNum << " of " << row << endl;
         }
     }
-
-
 };
 #endif

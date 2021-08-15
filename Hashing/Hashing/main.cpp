@@ -1,8 +1,8 @@
 ///////////////////////////////////////////////////////////
 //  Main.cpp
-//  CIS22C - Group Project Hasing
-//  Created on: 2/26/2017 
-//  Student: Xu Tang
+//  Group Project Hasing
+//  Created on: 2/26/2017
+//  Student: Robert Tang
 //  IDE: Visual Studio 2013
 ///////////////////////////////////////////////////////////
 
@@ -21,7 +21,7 @@ void menu()
 {
     cout << "************************************************************************************************" << endl;
     cout << "*                          Welcome to CIS22C-Group Project                                     *" << endl;
-    cout << "*                                 Student: Xu Tang                                             *" << endl;
+    cout << "*                                 Student: Robert Tang                                             *" << endl;
     cout << "*                  Group: Soham Pardeshi, Ben Fong, Samantha Seymour                           *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate following Hashing and Bloom Filter.                            *" << endl;
@@ -61,8 +61,6 @@ void main()
         }
     } while (exit != true);
 
-
     cout << "Going to close application. ";
     system("pause");
 }
-

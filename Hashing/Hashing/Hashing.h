@@ -20,7 +20,7 @@ class Entry
 public:
     Entry<K, V> *left;
     Entry<K, V> *right;
-    
+
     // Constructors
     Entry()
     {
@@ -42,7 +42,6 @@ public:
         return this->key;
     }
 
-
     V getValue()
     {
         return this->value;
@@ -51,22 +50,21 @@ public:
     //friend class HashMap;
 };
 
-
 // Interface of Hash Tree
 template <class K, class V, class H>
-class HashMap {
+class HashMap
+{
 private:
     int capacity = 500;
-    int num;                    // number of entries
-    Entry<K, V> ** table;       // bucket array
+    int num;             // number of entries
+    Entry<K, V> **table; // bucket array
 
-
-public: 
+public:
     //typedef Entry<const K, V> Entry;    // a (key,value) pair
 
-    HashMap()    // constructor
+    HashMap() // constructor
     {
-        table = new Entry<K, V>*[capacity];
+        table = new Entry<K, V> *[capacity];
         for (int i = 0; i < capacity; i++)
         {
             table[i] = nullptr;
@@ -77,7 +75,7 @@ public:
     {
         cout << "************************************************************************************************" << endl;
         cout << "*                              Welcome to CIS22C-Group Project                                 *" << endl;
-        cout << "*                                 Student: Xu Tang                                             *" << endl;
+        cout << "*                                 Student: Robert Tang                                             *" << endl;
         cout << "*                  Group: Soham Pardeshi, Ben Fong, Samantha Seymour                           *" << endl;
         cout << "*                                                                                              *" << endl;
         cout << "* This program will demonstrate:                                                               *" << endl;
@@ -95,7 +93,7 @@ public:
 
     void main()
     {
-        
+
         bool exit = false;
         int input;
 
@@ -184,8 +182,8 @@ public:
         // Erase characters from string
         s.erase(0, p);
 
-        // Finds the last character equal to none of the 
-        // characters in the given character sequence. 
+        // Finds the last character equal to none of the
+        // characters in the given character sequence.
         p = s.find_last_not_of(" \t");
 
         if (string::npos != p)
@@ -193,12 +191,10 @@ public:
             s.erase(p + 1);
         }
 
-
         return s;
     }
 
-
-    H hashFunc(K& k) // hash function
+    H hashFunc(K &k) // hash function
     {
         int k_ascii = string2ascii(k);
         //cout << k << " to int : " << k_ascii << endl;
@@ -218,7 +214,7 @@ public:
         else
         {
             //cout << "collection happened at " << hash << " for " << key << " with " << table[hash]->getKey() << endl; system("pause");
-            Entry<K, V> * entryPtr = table[hash];
+            Entry<K, V> *entryPtr = table[hash];
 
             bool cont = true;
 
@@ -237,7 +233,7 @@ public:
                         entryPtr = entryPtr->left;
                     }
                 }
-                else// To right
+                else // To right
                 {
                     if (entryPtr->right == NULL)
                     {
@@ -250,17 +246,16 @@ public:
                         entryPtr = entryPtr->right;
                     }
                 }
-            } while (cont && entryPtr != NULL);            
-            
+            } while (cont && entryPtr != NULL);
         }
     }
 
-    V get(K key)               // find entry with key k
+    V get(K key) // find entry with key k
     {
         H hash = hashFunc(key);
         if (table[hash] != NULL)
         {
-            Entry<K, V> * entryPtr = table[hash];
+            Entry<K, V> *entryPtr = table[hash];
 
             bool cont = true;
             K entryKey;
@@ -277,7 +272,7 @@ public:
                 {
                     entryPtr = entryPtr->left;
                 }
-                else// To right
+                else // To right
                 {
                     entryPtr = entryPtr->right;
                 }
@@ -288,7 +283,7 @@ public:
         return NULL;
     }
 
-    void display()              // Print hash table
+    void display() // Print hash table
     {
         for (int i = 0; i < capacity; i++)
         {
@@ -296,7 +291,7 @@ public:
 
             if (table[i] == NULL)
             {
-                 cout << "NULL" << endl;
+                cout << "NULL" << endl;
             }
             else
             {
@@ -304,14 +299,13 @@ public:
                 traversal(table[i]);
                 cout << endl;
             }
-            
         }
     }
 
-    void traversal(Entry<K,V> * entryPtr)
+    void traversal(Entry<K, V> *entryPtr)
     {
         if (entryPtr)
-        {            
+        {
             cout << entryPtr->getKey() << ":" << entryPtr->getValue() << " | ";
 
             if (entryPtr->left != NULL)
@@ -319,27 +313,26 @@ public:
                 cout << "(<<< left)";
                 traversal(entryPtr->left);
             }
-                       
+
             if (entryPtr->right != NULL)
             {
                 cout << "(right >>>)";
                 traversal(entryPtr->right);
             }
-            
         }
     }
 
-    int size() const               // number of entries
+    int size() const // number of entries
     {
         return num;
     }
 
-    bool empty() const             // is the map empty
+    bool empty() const // is the map empty
     {
         return num == 0;
     }
 
-    void clear()                    // clear hash table
+    void clear() // clear hash table
     {
         for (int i = 0; i < capacity; i++)
         {
@@ -350,22 +343,20 @@ public:
         }
     }
 
-
-    void removeTree(Entry<K,V> * entryPtr)
+    void removeTree(Entry<K, V> *entryPtr)
     {
         if (entryPtr)
         {
             removeTree(entryPtr->left);
             removeTree(entryPtr->right);
         }
-        
-        
+
         delete entryPtr;
         num--;
         //cout << "current size: " << num << endl;
     }
 
-    string* csv2arr(string line)
+    string *csv2arr(string line)
     {
         char delimiter = ',';
         const int SIZE = 2;
@@ -403,7 +394,7 @@ public:
             while (getline(datafile, line))
             {
                 item = csv2arr(line); // parse csv string to array
-                v = atof(item[1].c_str()); 
+                v = atof(item[1].c_str());
                 // typeid(v).name()
                 put(item[0], v);
                 cout << item[0] << "\t" << v << endl;
@@ -443,8 +434,6 @@ public:
                 {
                     errorNum++;
                 }
-                
-                
             }
 
             cout << "Total rows of error: " << errorNum << endl;
@@ -459,4 +448,3 @@ public:
 
 #endif
 // definition end **********************************************************************************
-

@@ -10,11 +10,10 @@
 #include <iomanip> // Header providing parametric manipulators
 #include <sstream> // Header providing string stream classes
 
-
 #include "Inventory.h"
 using namespace std;
 
-string* Inventory::csv2arr(string line)
+string *Inventory::csv2arr(string line)
 {
 	const int SIZE = 8;
 	string str, *ret = new string[SIZE];
@@ -32,23 +31,26 @@ string* Inventory::csv2arr(string line)
 	return ret;
 }
 
-Inventory::Inventory(){
-	books = new string*[99];
+Inventory::Inventory()
+{
+	books = new string *[99];
 	importDatafile();
 	selectionSort(getBookArray(), 0);
-
 }
 
-Inventory::~Inventory(){
+Inventory::~Inventory()
+{
 	deleteMemory();
 }
 
 void Inventory::deleteMemory()
 {
 	//cout << "Inventory" << endl;
-	if (bookRow > 0){
+	if (bookRow > 0)
+	{
 		//cout << "going to delete book array." << endl; system("pause");
-		for (int i = 0; i < bookRow; i++) {
+		for (int i = 0; i < bookRow; i++)
+		{
 			//cout << "going to delete book array :" << i << endl; system("pause");
 			delete[] books[i];
 			//cout << "deleted book array :" << i << endl; system("pause");
@@ -59,35 +61,38 @@ void Inventory::deleteMemory()
 	}
 }
 
-
-void Inventory::importDatafile(){
+void Inventory::importDatafile()
+{
 	fstream file; // txt database file
 	file.open(dataFileName, ios::in);
 	string line, str;
 	string *strArr;
 
-	if (file.fail())// If the file does not existed
+	if (file.fail()) // If the file does not existed
 	{
 		cout << "The database file (books.txt) does not exist." << endl;
 		system("PAUSE");
 		exit(0);
 	}
-	else// If the file successfully opened
+	else // If the file successfully opened
 	{
 		int SIZE = 0;
 
-		while (getline(file, line)){
+		while (getline(file, line))
+		{
 			books[SIZE] = new string[bookColumn]; // columns
 			strArr = csv2arr(line);
 
-			for (int i = 0; i < 8; i++){
+			for (int i = 0; i < 8; i++)
+			{
 				books[SIZE][i] = strArr[i];
 			}
 
 			SIZE++;
 		}
 
-		if (SIZE > bookRow){
+		if (SIZE > bookRow)
+		{
 			bookRow = SIZE;
 		}
 
@@ -115,22 +120,23 @@ void Inventory::exportDatafile()
 	else
 	{
 		string str;
-		for (int i = 0; i < bookRow; i++){
+		for (int i = 0; i < bookRow; i++)
+		{
 			str = implode(books[i], '|');
 			file << str << endl; // Write to file
-		}// end for
+		}						 // end for
 	}
 
 	file.close();
 }
 
-
-string Inventory::implode(string* arr, char delimiter='|'){
+string Inventory::implode(string *arr, char delimiter = '|')
+{
 
 	string str;
 	for (int i = 0; i < bookColumn; i++)
 	{
-		if (i < bookColumn-1)
+		if (i < bookColumn - 1)
 		{
 			str += arr[i] + delimiter;
 		}
@@ -138,35 +144,40 @@ string Inventory::implode(string* arr, char delimiter='|'){
 		{
 			str += arr[i];
 		}
-
 	}
 
 	return str;
 }
 
-void Inventory::setBookArray(string **arr){
+void Inventory::setBookArray(string **arr)
+{
 	books = arr;
 }
 
-string ** Inventory::getBookArray() const{
+string **Inventory::getBookArray() const
+{
 	return books;
 }
 
-void Inventory::listBooks(){
+void Inventory::listBooks()
+{
 	books = getBookArray();
 
-	for (int i = 0; i < bookRow; i++){
-		if (i == 0){
+	for (int i = 0; i < bookRow; i++)
+	{
+		if (i == 0)
+		{
 			showbook(books[i], true);
 		}
 		else
 		{
 			showbook(books[i], false);
 		}
-	}// end for
+	} // end for
 }
 
-void Inventory::showbook(string * book, bool showHeading){
+void Inventory::showbook(string *book, bool showHeading)
+{
 	if (showHeading)
 	{
 		cout << setw(15) << left << "ISBN";
@@ -179,23 +190,22 @@ void Inventory::showbook(string * book, bool showHeading){
 		cout << setw(25) << left << "Retail price";
 		cout << endl;
 		cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
-
 	}
 
-	cout << setw(15) << left << book[0]; // ISBN
-	cout << setw(70) << left << book[1]; // Title
-	cout << setw(25) << left << book[2]; // Author
-	cout << setw(25) << left << book[3]; // Publisher
-	cout << setw(15) << left << book[4]; // Date added
+	cout << setw(15) << left << book[0];  // ISBN
+	cout << setw(70) << left << book[1];  // Title
+	cout << setw(25) << left << book[2];  // Author
+	cout << setw(25) << left << book[3];  // Publisher
+	cout << setw(15) << left << book[4];  // Date added
 	cout << setw(10) << right << book[5]; // Quantity
 	cout << setw(18) << right << book[6]; // Wholesale cost
 	cout << setw(18) << right << book[7]; // Retail price
 
-
 	cout << endl;
 }
 
-void Inventory::lookup(){
+void Inventory::lookup()
+{
 
 	//listBooks();
 
@@ -203,7 +213,7 @@ void Inventory::lookup(){
 	string keyword;
 	cin >> keyword;
 
-	int searchRange[] = { 0, 1, 2 }; // Searching book's ISBN, Title, Author
+	int searchRange[] = {0, 1, 2}; // Searching book's ISBN, Title, Author
 	int searchRangeSize = sizeof(searchRange) / sizeof(searchRange[0]);
 	//cout << "size of range: " << searchRangeSize; system("pause");
 
@@ -217,19 +227,21 @@ void Inventory::lookup(){
 	} while (key_found == -1 && index < searchRangeSize);
 
 	//cout << "key:" << key_found << endl;
-	if (key_found != -1){
+	if (key_found != -1)
+	{
 		showbook(books[key_found], true);
 	}
 	else
 	{
 		cout << "There are no books matching " << keyword << endl;
 	}
-	cout << "\n\n" << endl;
+	cout << "\n\n"
+		 << endl;
 	system("pause");
-
 }
 
-void Inventory::menu(){
+void Inventory::menu()
+{
 	int choice;
 	bool exit = false;
 
@@ -238,13 +250,15 @@ void Inventory::menu(){
 		system("cls");
 		cout << "*****************************************" << endl;
 		cout << "Secrendipity Booksellers" << endl;
-		cout << "   Inventory Database   " << endl << endl;
+		cout << "   Inventory Database   " << endl
+			 << endl;
 		cout << "1. Look Up a Book" << endl;
 		cout << "2. Add a Book" << endl;
 		cout << "3. Edit a Book's Record" << endl;
 		cout << "4. Delete a Book" << endl;
 		cout << "5. Return to the Main Menu" << endl;
-		cout << "*****************************************" << endl << endl;
+		cout << "*****************************************" << endl
+			 << endl;
 
 		cout << "Enter Your Choice:";
 		while (!(cin >> choice))
@@ -254,7 +268,8 @@ void Inventory::menu(){
 			cout << "Invalid choice, please enter a whole number:";
 		}
 
-		if (choice == 1){// Look up a book
+		if (choice == 1)
+		{ // Look up a book
 			lookup();
 		}
 		else if (choice == 2) // add a book
@@ -274,104 +289,107 @@ void Inventory::menu(){
 			exit = true;
 		}
 	} while (exit != true);
-
 }
 
-
-string Inventory::getAuthor(int subscript){
+string Inventory::getAuthor(int subscript)
+{
 
 	return books[subscript][2];
 }
 
-
-void Inventory::setAuthor(int subscript, string author){
+void Inventory::setAuthor(int subscript, string author)
+{
 	books[subscript][2] = author;
 }
 
-
-string Inventory::getTitle(int subscript){
+string Inventory::getTitle(int subscript)
+{
 
 	return books[subscript][1];
 }
 
-
-void Inventory::setTitle(int subscript, string title){
+void Inventory::setTitle(int subscript, string title)
+{
 	books[subscript][1] = title;
 }
 
-
-string Inventory::getISBN(int subscript){
+string Inventory::getISBN(int subscript)
+{
 	return books[subscript][0];
 }
 
-
-void Inventory::setISBN(int subscript, string isbn){
+void Inventory::setISBN(int subscript, string isbn)
+{
 	books[subscript][0] = isbn;
 }
 
-
-string Inventory::getPublisher(int subscript){
+string Inventory::getPublisher(int subscript)
+{
 
 	return books[subscript][3];
 }
 
-
-void Inventory::setPublisher(int subscript, string publisher){
+void Inventory::setPublisher(int subscript, string publisher)
+{
 	books[subscript][3] = publisher;
 }
 
-
-string Inventory::getDateAdded(int subscript){
+string Inventory::getDateAdded(int subscript)
+{
 
 	return books[subscript][4];
 }
 
-
-void Inventory::setDateAdded(int subscript, string date){
+void Inventory::setDateAdded(int subscript, string date)
+{
 	books[subscript][4] = date;
 }
 
-
-string Inventory::getQuantity(int subscript){
+string Inventory::getQuantity(int subscript)
+{
 
 	return books[subscript][5];
 }
 
-
-void Inventory::setQuantity(int subscript, int qty){
+void Inventory::setQuantity(int subscript, int qty)
+{
 	books[subscript][5] = qty;
 }
 
-string Inventory::getWhosleCost(int subscript){
+string Inventory::getWhosleCost(int subscript)
+{
 	return books[subscript][6];
 }
 
-void Inventory::setWhosleCost(int subscript, int cost){
+void Inventory::setWhosleCost(int subscript, int cost)
+{
 	books[subscript][6] = cost;
 }
 
-string Inventory::getRetailPrice(int subscript){
+string Inventory::getRetailPrice(int subscript)
+{
 	return books[subscript][7];
 }
 
-void Inventory::setRetailPrice(int subscript, int price){
+void Inventory::setRetailPrice(int subscript, int price)
+{
 	books[subscript][7] = price;
 }
 
 //***************************************************************************
 //* This funciton will perform binary search                                *
-//* Auther: Xu Tang                                                         *
+//* Auther: Robert Tang                                                         *
 //***************************************************************************
-int Inventory::binarySearch(string ** array, string keyword, int column=0)
+int Inventory::binarySearch(string **array, string keyword, int column = 0)
 {
 
 	bool found = false; // Flag
 
 	int size = bookRow - 1, // Array length
-		first = 0,		// First array element
-		last = size,	// Last array element
-		middle,			// Mid point of search
-		position = -1;	// Position of search value
+		first = 0,			// First array element
+		last = size,		// Last array element
+		middle,				// Mid point of search
+		position = -1;		// Position of search value
 	/*
 	cout << "size: " << size << endl;
 	cout << "first: " << first << endl;
@@ -392,7 +410,7 @@ int Inventory::binarySearch(string ** array, string keyword, int column=0)
 		{
 			last = middle - 1;
 		}
-		else// If value is in upper half
+		else // If value is in upper half
 		{
 			first = middle + 1;
 		}
@@ -404,15 +422,15 @@ int Inventory::binarySearch(string ** array, string keyword, int column=0)
 //***************************************************************************
 //* This funciton will perform selecting sort                               *
 //* For Ascending sort                                                      *
-//* 1. Locate smallest element in array ¨Cswap it with element at position 0 *
-//* 2. Locate second smallest element ¨Cswap it with element at position 1   *
+//* 1. Locate smallest element in array ï¿½Cswap it with element at position 0 *
+//* 2. Locate second smallest element ï¿½Cswap it with element at position 1   *
 //* 3. Continue process until array sorted                                  *
-//* Auther: Xu Tang                                                         *
+//* Auther: Robert Tang                                                         *
 //***************************************************************************
-void Inventory::selectionSort(string** array, int column)
+void Inventory::selectionSort(string **array, int column)
 {
 	int minIndex, arrLength = bookRow;
-	string* minValue;
+	string *minValue;
 
 	for (int startScan = 0; startScan < arrLength; startScan++)
 	{
@@ -444,7 +462,8 @@ void Inventory::selectionSort(string** array, int column)
 	}
 }
 
-void Inventory::addABook(){
+void Inventory::addABook()
+{
 	string isbn, title, author, publisher, date_added, quantity, wholesale_cost, retail_price;
 
 	cout << "******************* Add a book ******************* " << endl;
@@ -493,7 +512,6 @@ void Inventory::addABook(){
 		exportDatafile();
 		importDatafile();
 		cout << "New book has been added to database." << endl;
-
 	}
 	else
 	{
@@ -502,7 +520,8 @@ void Inventory::addABook(){
 	system("pause");
 }
 
-void Inventory::editABook(){
+void Inventory::editABook()
+{
 	//listBooks();
 
 	cout << "******************* Edit a book ******************* " << endl;
@@ -510,7 +529,7 @@ void Inventory::editABook(){
 	string keyword;
 	cin >> keyword;
 
-	int searchRange[] = { 0 }; // Searching book's ISBN
+	int searchRange[] = {0}; // Searching book's ISBN
 	int searchRangeSize = sizeof(searchRange) / sizeof(searchRange[0]);
 
 	int key_found = -1;
@@ -522,14 +541,14 @@ void Inventory::editABook(){
 		index++;
 	} while (key_found == -1 && index < searchRangeSize);
 
-	if (key_found != -1){
+	if (key_found != -1)
+	{
 		showbook(books[key_found], true);
 	}
 	else
 	{
 		cout << "There are no books matching " << keyword << endl;
 	}
-
 
 	string isbn, title, author, publisher, date_added, quantity, wholesale_cost, retail_price;
 
@@ -575,17 +594,18 @@ void Inventory::editABook(){
 
 		exportDatafile();
 		cout << "Book info has been updated to database." << endl;
-
 	}
 	else
 	{
 		cout << "Edit a book has been cancelled." << endl;
 	}
-	cout << "\n\n" << endl;
+	cout << "\n\n"
+		 << endl;
 	system("pause");
 }
 
-void Inventory::deleteABook(){
+void Inventory::deleteABook()
+{
 	//listBooks();
 
 	cout << "******************* Delete a book ******************* " << endl;
@@ -593,7 +613,7 @@ void Inventory::deleteABook(){
 	string keyword;
 	cin >> keyword;
 
-	int searchRange[] = { 0 }; // Searching book's ISBN
+	int searchRange[] = {0}; // Searching book's ISBN
 	int searchRangeSize = sizeof(searchRange) / sizeof(searchRange[0]);
 
 	int key_found = -1;
@@ -605,7 +625,8 @@ void Inventory::deleteABook(){
 		index++;
 	} while (key_found == -1 && index < searchRangeSize);
 
-	if (key_found != -1){
+	if (key_found != -1)
+	{
 		showbook(books[key_found], true);
 	}
 	else
@@ -633,7 +654,6 @@ void Inventory::deleteABook(){
 		exportDatafile();
 		cout << "Deleted." << endl;
 		//cout << bookRow << " books now;" << endl; system("pause");
-
 	}
 	else
 	{
@@ -642,16 +662,17 @@ void Inventory::deleteABook(){
 	system("pause");
 }
 
-int Inventory::date2int(string c_date){
-	int mm=0, dd=0, yyyy=0;
+int Inventory::date2int(string c_date)
+{
+	int mm = 0, dd = 0, yyyy = 0;
 	sscanf_s(c_date.c_str(), "%d/%d/%d", &mm, &dd, &yyyy);
 
 	string ret;
 	ret += to_string(yyyy);
 	//cout << ret << endl; system("pause");
 
-
-	if (mm<10){
+	if (mm < 10)
+	{
 		ret += "0" + to_string(mm);
 	}
 	else
@@ -660,7 +681,8 @@ int Inventory::date2int(string c_date){
 	}
 	//cout << ret << endl; system("pause");
 
-	if (dd<10){
+	if (dd < 10)
+	{
 		ret += "0" + to_string(dd);
 	}
 	else

@@ -1,9 +1,7 @@
 ///////////////////////////////////////////////////////////
 //  Main.cpp
-//  CIS22C - Midterm
-//  Created on: 2/18/2017
-//  Student: Xu Tang
-//  IDE: Visual Studio 2013
+//  Midterm
+//  Student: Robert Tang
 ///////////////////////////////////////////////////////////
 
 #include <iostream>
@@ -12,13 +10,10 @@
 #include <sstream>
 #include <iomanip>
 
-
 using namespace std;
-
 
 #ifndef _CIS22C_MIDTERM
 #define _CIS22C_MIDTERM
-
 
 // definition begin **********************************************************************************
 // Node class
@@ -47,13 +42,12 @@ public:
 	}
 };
 
-
 // Interface of LinkedList
 template <class T>
 class LinkedList
 {
 private:
-	int count = 0;  // To count number of entries in the list
+	int count = 0; // To count number of entries in the list
 	bool sorted = false;
 	Node<T> *head;
 	Node<T> *tail;
@@ -63,13 +57,13 @@ public:
 	~LinkedList(); // Destructor
 
 	// Functions
-	void insertAfter(T, T); // Add a new node after another
+	void insertAfter(T, T);		  // Add a new node after another
 	void insertAtBeginning(T, T); // Adds a new entry to the begining of list
-	void insertAtEnd(T, T); // Adds a new entry to the end of list
-	bool search(T);         // Search the linkedlist
+	void insertAtEnd(T, T);		  // Adds a new entry to the end of list
+	bool search(T);				  // Search the linkedlist
 
 	// Sorting
-	int quickSort(LinkedList<T>& S, int);
+	int quickSort(LinkedList<T> &S, int);
 };
 #endif
 // definition end **********************************************************************************
@@ -77,12 +71,11 @@ public:
 // Implementation begin **********************************************************************************
 // Constructor
 template <class T>
-LinkedList<T>::LinkedList()// Constructor inline
+LinkedList<T>::LinkedList() // Constructor inline
 {
 	head = nullptr;
 	tail = nullptr;
 }
-
 
 // Destructor
 template <class T>
@@ -101,7 +94,7 @@ void LinkedList<T>::insertAtEnd(T aTitle, T aValue)
 	// allocate a new node to hold aValue
 	newNode = new Node<T>(aTitle, aValue);
 
-	if (!head)// If head is unused then hold newNode in head
+	if (!head) // If head is unused then hold newNode in head
 	{
 		head = newNode;
 		tail = newNode;
@@ -124,11 +117,10 @@ void LinkedList<T>::insertAtEnd(T aTitle, T aValue)
 
 		// Add new node to the end of list
 
-
 		nodePtr->next = newNode; // Last node
 		newNode->next = nullptr;
 		newNode->prev = nodePtr; // new node's prev is last node
-		tail = newNode;          // Tail set as new node
+		tail = newNode;			 // Tail set as new node
 
 		count++;
 
@@ -147,7 +139,7 @@ void LinkedList<T>::insertAtBeginning(T aTitle, T aValue)
 	// allocate a new node to hold aValue
 	newNode = new Node<T>(aTitle, aValue);
 
-	if (!head)// If head is unused then hold newNode in head
+	if (!head) // If head is unused then hold newNode in head
 	{
 		head = newNode;
 		tail = newNode;
@@ -187,9 +179,7 @@ bool LinkedList<T>::search(T aTitle)
 	}
 
 	return false;
-
 }
-
 
 // Add a new node after another
 template <class T>
@@ -231,19 +221,15 @@ void LinkedList<T>::insertAfter(T targetTitle, T aTitle)
 			newNode->next = nodePtr->next;
 		}
 
-
 		nodePtr->next = newNode;
 		newNode->prev = nodePtr;
-
-
 	}
 }
-
 
 // QuickSort -- divide-and-conquer
 // O(n log n)
 template <typename T>
-int LinkedList<T>::quickSort(LinkedList<T>& S, int iterator_count = 0)
+int LinkedList<T>::quickSort(LinkedList<T> &S, int iterator_count = 0)
 {
 	int n = S.count;
 	int half = n / 2;
@@ -258,7 +244,7 @@ int LinkedList<T>::quickSort(LinkedList<T>& S, int iterator_count = 0)
 
 	// Delcare pivot
 	//Node<T> * nodePtrPivot = S.tail; // Choose the last node to be pivot can increase running times if the linked list already sorted.
-	Node<T> * nodePtrPivot = S.head;
+	Node<T> *nodePtrPivot = S.head;
 	for (int x = 0; x < half; x++)
 	{
 		nodePtrPivot = nodePtrPivot->next;
@@ -267,7 +253,7 @@ int LinkedList<T>::quickSort(LinkedList<T>& S, int iterator_count = 0)
 
 	// Divide ********************
 	// Separate nodes groups: less than pivot, equal to pivot, greater than pivot
-	Node<T> * nodePtr = S.head;
+	Node<T> *nodePtr = S.head;
 	for (int i = 0; (i < n && nodePtr != nullptr); i++)
 	{
 		iterator_count++;
@@ -340,7 +326,7 @@ int LinkedList<T>::quickSort(LinkedList<T>& S, int iterator_count = 0)
 
 int main()
 {
-    /*
+	/*
     1. Given these two node based structures:
         Node<T>
             T data
@@ -372,9 +358,8 @@ int main()
           6        return DoIt(n.next,k)
     */
 
-    LinkedList<string> list;
+	LinkedList<string> list;
 
-
-    system("pause");
-    return 0;
+	system("pause");
+	return 0;
 }
