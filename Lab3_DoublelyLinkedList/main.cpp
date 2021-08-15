@@ -816,8 +816,8 @@ void testImportDataFile()
 void menu()
 {
     cout << "************************************************************************************************" << endl;
-    cout << "*                              Welcome to Lab 3                                         *" << endl;
-    cout << "*                                 Student: Robert Tang                                             *" << endl;
+    cout << "*                                   Welcome to Lab 3                                           *" << endl;
+    cout << "*                                 Student: Robert Tang                                         *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate:                                                               *" << endl;
     cout << "*  + Convert Lab1's single linked list to be a doubly linked list                              *" << endl;

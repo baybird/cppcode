@@ -74,8 +74,8 @@ public:
     void menu()
     {
         cout << "************************************************************************************************" << endl;
-        cout << "*                              Welcome to Group Project                                 *" << endl;
-        cout << "*                                 Student: Robert Tang                                             *" << endl;
+        cout << "*                              Welcome to Group Project                                        *" << endl;
+        cout << "*                                 Student: Robert Tang                                         *" << endl;
         cout << "*                  Group: Soham Pardeshi, Ben Fong, Samantha Seymour                           *" << endl;
         cout << "*                                                                                              *" << endl;
         cout << "* This program will demonstrate:                                                               *" << endl;

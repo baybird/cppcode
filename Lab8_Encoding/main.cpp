@@ -20,8 +20,8 @@ using namespace std;
 void menu()
 {
     cout << "************************************************************************************************" << endl;
-    cout << "*                            Lab 8 - Encoding                                           *" << endl;
-    cout << "*                                 Student: Robert Tang                                             *" << endl;
+    cout << "*                                   Lab 8 - Encoding                                           *" << endl;
+    cout << "*                                 Student: Robert Tang                                         *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate:                                                               *" << endl;
     cout << "*  + Using the Huffman encoding algorithm as explained in class, encode and decode             *" << endl;

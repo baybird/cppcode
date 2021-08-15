@@ -20,8 +20,8 @@ using namespace std;
 void menu()
 {
     cout << "************************************************************************************************" << endl;
-    cout << "*                              Welcome to Lab 5                                         *" << endl;
-    cout << "*                                 Student: Robert Tang                                             *" << endl;
+    cout << "*                                   Welcome to Lab 5                                           *" << endl;
+    cout << "*                                 Student: Robert Tang                                         *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate:                                                               *" << endl;
     cout << "*  + Convert the TreeArray C++ source code into a LinkedList BinaryTree.                       *" << endl;

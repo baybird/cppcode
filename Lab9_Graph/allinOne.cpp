@@ -145,8 +145,8 @@ using namespace std;
 void menu()
 {
     cout << "************************************************************************************************" << endl;
-    cout << "*                            Lab 9 - Graphing                                           *" << endl;
-    cout << "*                                 Student: Robert Tang                                             *" << endl;
+    cout << "*                                   Lab 9 - Graphing                                           *" << endl;
+    cout << "*                                 Student: Robert Tang                                         *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate:                                                               *" << endl;
     cout << "*    Given the Airport's listed in the weighted graph on the Airport.PNG file in the documents *" << endl;

@@ -435,8 +435,8 @@ void main()
 {
     // Show welcome message
     cout << "****************************************************************************" << endl;
-    cout << "*                  Welcome to Lab 1                                 *" << endl;
-    cout << "*                     Student: Robert Tang                                     *" << endl;
+    cout << "*                       Welcome to Lab 1                                   *" << endl;
+    cout << "*                     Student: Robert Tang                                 *" << endl;
     cout << "*                                                                          *" << endl;
     cout << "*   This program will demonstrate followings:                              *" << endl;
     cout << "*   1. Convert the dynamic array class to be a linked list.                *" << endl;

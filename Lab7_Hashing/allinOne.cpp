@@ -518,8 +518,8 @@ using namespace std;
 void menu()
 {
     cout << "************************************************************************************************" << endl;
-    cout << "*                              Welcome to Lab7 - Hashing                              *" << endl;
-    cout << "*                                 Student: Robert Tang                                             *" << endl;
+    cout << "*                               Welcome to Lab7 - Hashing                                      *" << endl;
+    cout << "*                                 Student: Robert Tang                                         *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate:                                                               *" << endl;
     cout << "*  + Place each ADT data object into a Hashing structure using a custom hashing function.      *" << endl;

@@ -512,8 +512,8 @@ void main()
 {
     // Show welcome message
     cout << "****************************************************************************" << endl;
-    cout << "*                  Welcome to Lab 2                                 *" << endl;
-    cout << "*                     Student: Robert Tang                                     *" << endl;
+    cout << "*                        Welcome to Lab 2                                  *" << endl;
+    cout << "*                      Student: Robert Tang                                *" << endl;
     cout << "*                                                                          *" << endl;
     cout << "*   This program will demonstrate using a stack to evaluate an expression. *" << endl;
     cout << "*   1. Read in a string that has an expression using post - fix notation   *" << endl;

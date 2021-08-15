@@ -297,8 +297,8 @@ using namespace std;
 void menu()
 {
     cout << "************************************************************************************************" << endl;
-    cout << "*                              Welcome to Lab 6                                         *" << endl;
-    cout << "*                                 Student: Robert Tang                                             *" << endl;
+    cout << "*                                   Welcome to Lab 6                                           *" << endl;
+    cout << "*                                 Student: Robert Tang                                         *" << endl;
     cout << "*                                                                                              *" << endl;
     cout << "* This program will demonstrate:                                                               *" << endl;
     cout << "*  + Redo the PriorityQueue assignment using your BinaryTree structure from Lab#5.             *" << endl;

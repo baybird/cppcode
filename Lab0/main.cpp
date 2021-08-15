@@ -104,8 +104,8 @@ void main()
 {
 	// Show welcome message
 	cout << "*************************************************************" << endl;
-	cout << "*                  Welcome to -Lab 0                  *" << endl;
-	cout << "*                     Student: Robert Tang                      *" << endl;
+	cout << "*                      Welcome to - Lab 0                   *" << endl;
+	cout << "*                     Student: Robert Tang                  *" << endl;
 	cout << "*                                                           *" << endl;
 	cout << "*   This program will demonstrate Dynamic Array Container.  *" << endl;
 	cout << "*************************************************************" << endl;
