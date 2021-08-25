@@ -1,6 +1,5 @@
 ///////////////////////////////////////////////////////////
 //  Tree Node
-//  Created on:  11/15/2016
 //  Author: Robert T
 //  IDE Used: Microsoft Visual Studio 2013
 ///////////////////////////////////////////////////////////
@@ -26,7 +25,6 @@ public:
 
     Node<T> *left = nullptr;
     Node<T> *right = nullptr;
-    
 
     // Constructors
     Node()
@@ -46,12 +44,13 @@ public:
         freq = 1;
     }
 
-    Node(Node* n1) : left(n1) {
+    Node(Node *n1) : left(n1)
+    {
         key = left->getSymbol();
         freq = left->freq;
     };
 
-    Node(Node* n0, Node* n1) : left(n0), right(n1)
+    Node(Node *n0, Node *n1) : left(n0), right(n1)
     {
         key = left->getSymbol() + right->getSymbol();
         freq = left->freq + right->freq;
@@ -66,7 +65,6 @@ public:
     {
         return key;
     }
-
 };
 
 #endif;

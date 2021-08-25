@@ -111,8 +111,6 @@ void main()
 	cout << "*************************************************************" << endl;
 
 	//test1();
-
 	testImportDataFile();
-
 	system("pause");
 }

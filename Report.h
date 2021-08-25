@@ -1,7 +1,6 @@
 ///////////////////////////////////////////////////////////
 //  Report.h
 //  Implementation of the Class Report
-//  Created on:  11/15/2016
 //  Author: Robert T
 ///////////////////////////////////////////////////////////
 
@@ -22,7 +21,6 @@
 // Friend function
 // + main(): friend int;
 
-
 #ifndef _CRT_SECURE_NO_WARNING_REPORT
 #define _CRT_SECURE_NO_WARNING_REPORT
 #include "Inventory.h"
@@ -33,7 +31,7 @@ public:
 	Report();
 	virtual ~Report();
 
-    // Accessors
+	// Accessors
 	void inventoryList();
 	void inventoryWholesaleValue();
 	void inventoryRetailValue();
@@ -42,8 +40,8 @@ public:
 	void listByAge();
 	void menu();
 
-    // Mutators
-	void selectionSortByNumber(string** array, int column);
+	// Mutators
+	void selectionSortByNumber(string **array, int column);
 
 	// Friend function
 	friend int main();

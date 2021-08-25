@@ -1,15 +1,13 @@
 ﻿///////////////////////////////////////////////////////////
 //  Huffman
-//  Created on:  11/15/2016
 //  Author: Robert T
-//  IDE Used: Microsoft Visual Studio 2013
+//  IDE Used: Microsoft Visual Studio
 ///////////////////////////////////////////////////////////
 #ifndef _HUFFMAN_TREE
 #define _HUFFMAN_TREE
 
 #include <iostream>
 #include <math.h>
-
 
 #include "PriorityQueue.h"
 #include "Hashing.h"
@@ -21,19 +19,19 @@ class HuffmanTree
 {
 
 private:
-    int size = 0;               // the tree size, that is, the number of nodes in the tree
+    int size = 0; // the tree size, that is, the number of nodes in the tree
     int encodeStrLength, decodeStrLength;
-    HashMap<char, string, int> * Hash = nullptr;
+    HashMap<char, string, int> *Hash = nullptr;
 
 public:
-    Node<T> * root = nullptr;   // a pointer to the root of the tree.
+    Node<T> *root = nullptr; // a pointer to the root of the tree.
 
     HuffmanTree()
     {
-        root = nullptr;        
+        root = nullptr;
     }
 
-    Node<T> * getRoot()
+    Node<T> *getRoot()
     {
         return root;
     }
@@ -43,8 +41,8 @@ public:
         return size;
     }
 
-    void buildTreeFromHeap(PriorityQueue<T> & heap)
-    {               
+    void buildTreeFromHeap(PriorityQueue<T> &heap)
+    {
         Hash = new HashMap<char, string, int>(heap.count);
 
         //cout << heap.count << endl; system("pause");
@@ -54,14 +52,13 @@ public:
         assignCode(root);
         //inOrder(root, 0);
 
-        
         add2Hash(root);
         //system("pause");
     }
 
-    void buildTree(PriorityQueue<T> & heap, int treeCount)
+    void buildTree(PriorityQueue<T> &heap, int treeCount)
     {
-        
+
         Node<T> *nodePtr = heap.front;
         Node<T> *newNodeR, *newNodeL;
         Node<T> *newBranch, *rootBranch;
@@ -74,7 +71,6 @@ public:
             treeCount--;
             //cout << nodePtr->key << " = " << newNodeR->getSymbol() << endl;
             heap.removeMin();
-
 
             // create branch
             if (heap.count)
@@ -122,21 +118,17 @@ public:
 
                 //inOrder(root, 0);
                 //system("pause");
-
             }
-
 
             //cout << "size: "<< heap.getCurrentSize() << endl;
             //system("pause");
-
-        }       
-        
+        }
 
         adjustTree(heap, treeCount);
         //system("pause");
     }
 
-    void adjustTree(PriorityQueue<T> & heap, int treeCount)
+    void adjustTree(PriorityQueue<T> &heap, int treeCount)
     {
         Node<T> *nodePtr = heap.front;
         Node<T> *newNodeL;
@@ -153,8 +145,8 @@ public:
 
         //cout << "root:" << root->key << endl;
 
-        int adjustAt = totalRightCount /2;
-        int beforeAdjustNode = adjustAt-1;
+        int adjustAt = totalRightCount / 2;
+        int beforeAdjustNode = adjustAt - 1;
         //cout << adjustAt << "/" << totalRightCount << endl;
 
         nodePtr = root;
@@ -181,16 +173,16 @@ public:
         nodePtr->right = nullptr;
         //cout << "remove: " << nodePtr->key << endl;
     }
-    
+
     void importTree(string file)
     {
         root = new Node<T>;
-        Node<T> * nodePtr;
+        Node<T> *nodePtr;
 
         fstream dataInfile;
         string line, code, ascii;
         int length;
-        
+
         dataInfile.open(file);
         if (dataInfile.fail())
         {
@@ -215,7 +207,7 @@ public:
                 }
                 else
                 {
-                    if (line[i] ==':')
+                    if (line[i] == ':')
                     {
                         do
                         {
@@ -223,21 +215,20 @@ public:
                             if (line[i] != '|')
                             {
                                 ascii = ascii + line[i];
-                            }                            
+                            }
                         } while (line[i] != '|');
-                        
                     }
                     //cout << "code: " << code << "; ascii: " << ascii << endl;
 
                     // create tree
                     int len = code.length();
-                    nodePtr = root; 
-                    
+                    nodePtr = root;
+
                     for (int k = 0; k < len; k++)
                     {
 
                         if (code[k] == '0') // left
-                        {                         
+                        {
                             if (nodePtr->left == nullptr)
                             {
                                 nodePtr->left = new Node<T>;
@@ -245,7 +236,7 @@ public:
 
                             nodePtr = nodePtr->left;
                         }
-                        else// right - is 1
+                        else // right - is 1
                         {
                             if (nodePtr->right == nullptr)
                             {
@@ -259,21 +250,17 @@ public:
                     nodePtr->code = code;
                     nodePtr->key = (char)stoi(ascii);
 
-
                     code = "";
                     ascii = "";
                 }
-                
             }
-
 
             //inOrder(root);
             //system("pause");
         }
     }
 
-
-    void add2Hash(Node<T> * nodePtr)
+    void add2Hash(Node<T> *nodePtr)
     {
         if (nodePtr != NULL)
         {
@@ -291,8 +278,8 @@ public:
 
     void insert(T x)
     {
-        Node<T> * newNode = new Node<T>(x);
-        Node<T> * nodePtr;
+        Node<T> *newNode = new Node<T>(x);
+        Node<T> *nodePtr;
         size++;
 
         cout << "insert: " << x;
@@ -340,7 +327,7 @@ public:
         }
     }
 
-    void search(Node<T> * nodePtr, T x, string & code )
+    void search(Node<T> *nodePtr, T x, string &code)
     {
         if (nodePtr != NULL)
         {
@@ -352,7 +339,7 @@ public:
                 //cout << nodePtr->getSymbol() << " (" << nodePtr->code << ") " << endl;
                 code = nodePtr->code;
                 return;
-            }            
+            }
 
             search(nodePtr->left, x, code);
         }
@@ -368,7 +355,7 @@ public:
         }
     }
 
-    void assignCode(Node<T> * nodePtr, string code = "", int level = 0)
+    void assignCode(Node<T> *nodePtr, string code = "", int level = 0)
     {
         if (nodePtr != NULL)
         {
@@ -394,7 +381,7 @@ public:
         {
             if (str[i] == '1')
             {
-                power = len - i -1;
+                power = len - i - 1;
                 ret += (int)pow(2, power);
             }
         }
@@ -410,9 +397,8 @@ public:
         {
             if (str[i] == '1')
             {
-                ch += (int) pow(2, (double)(7 - i));
+                ch += (int)pow(2, (double)(7 - i));
             }
-
         }
         return ch;
     }
@@ -424,12 +410,13 @@ public:
 
         for (int i = 7; i >= 0; i--)
         {
-            if (num - pow(2, i) >= 0) 
+            if (num - pow(2, i) >= 0)
             {
-                num -= (int) pow(2, i);
+                num -= (int)pow(2, i);
                 bits += "1";
             }
-            else bits += "0";
+            else
+                bits += "0";
         }
         return bits;
     }
@@ -444,7 +431,7 @@ public:
         return decodeStrLength;
     }
 
-    string dumpTree(Node<T> * nodePtr, string ret) // pre-order
+    string dumpTree(Node<T> *nodePtr, string ret) // pre-order
     {
 
         if (nodePtr)
@@ -454,17 +441,16 @@ public:
                 ret += nodePtr->code + ":" + to_string((int)nodePtr->key) + "|";
                 //cout << codeInt << endl; system("pause");
             }
-            
+
             if (nodePtr->left)
             {
                 ret = dumpTree(nodePtr->left, ret);
-            }          
+            }
 
             if (nodePtr->right)
             {
                 ret = dumpTree(nodePtr->right, ret);
             }
-            
 
             return ret;
         }
@@ -473,7 +459,8 @@ public:
     void encode(string infile, string outfile)
     {
         fstream dataInfile, dataOutfile;
-        string line, code, str, eight;;
+        string line, code, str, eight;
+        ;
         int strlength;
         char c;
 
@@ -497,8 +484,7 @@ public:
                 //cout << "Encoding, please wait a moment..." << endl;
             }
 
-            
-            // encode each char to bit as string - eg '00100100'            
+            // encode each char to bit as string - eg '00100100'
             while (getline(dataInfile, line))
             {
                 line += "\r\n";
@@ -510,13 +496,13 @@ public:
                     //code = Hash->get(c);
 
                     str = str + code;
-                    //cout << c << " = " << code << endl;                
+                    //cout << c << " = " << code << endl;
                 }
             }
             //cout << str << endl;
-            
+
             // tree length
-            int times =0;
+            int times = 0;
             encodeStrLength = str.length();
             // write length
             dataOutfile << encodeStrLength << endl;
@@ -524,7 +510,6 @@ public:
             // tree as string
             string treeString = dumpTree(root, "");
             dataOutfile << treeString << endl;
-
 
             // convert string to bit
             while (str.length() >= 8)
@@ -538,7 +523,7 @@ public:
             }
 
             // fill trailing zero to make it 8-bit long
-            if (str.length()>0)
+            if (str.length() > 0)
             {
                 //cout << "remain: " << str << endl;
                 while (str.length() % 8)
@@ -548,14 +533,13 @@ public:
                 dataOutfile << bits2char(str);
                 //cout << "fill as:" << str << endl;
             }
-            
+
             //system("pause");
-            
+
             dataOutfile.close();
             dataInfile.close();
             //cout << "Done. Saved to file \"" << outfile << "\"" << endl;
 
-            
             //inOrder(root);
         }
     }
@@ -566,9 +550,8 @@ public:
         fstream dataInfile, dataOutfile;
         string line, code, str;
         int strlength;
-        Node<T> * nodePtr = root;
+        Node<T> *nodePtr = root;
         char c;
-
 
         dataInfile.open(infile);
         if (dataInfile.fail())
@@ -588,14 +571,13 @@ public:
             {
                 cout << "Decoding, please wait a moment..." << endl;
             }
-            
 
             // decode each char to bit string - eg '00100100'
             int rows = 0;
             while (getline(dataInfile, line))
             {
                 rows++;
-                if (rows==1) // read length
+                if (rows == 1) // read length
                 {
                     encodeStrLength = atoi(line.c_str());
                     continue;
@@ -609,13 +591,12 @@ public:
                     //system("pause");
                 }
             }
-                      
+
             decodeStrLength = str.length();
 
             /*cout << str << endl;             
             cout << decodeStrLength << endl;
             system("pause");*/
-
 
             // convert bit to char
             for (int i = 0; i < getEncodeStringLength(); i++)
@@ -624,7 +605,7 @@ public:
                 code += c;
                 //cout << "c: " << c << endl;
 
-                if (c== '1')
+                if (c == '1')
                 {
                     nodePtr = nodePtr->right;
                     //cout << ">>> 1 to right" << endl;
@@ -644,9 +625,7 @@ public:
                     nodePtr = root;
                     code = "";
                 }
-                
             }
-            
 
             //system("pause");
             dataOutfile.close();
@@ -655,11 +634,11 @@ public:
         }
     }
 
-    void inOrder(Node<T> * nodePtr, int level = 0)
-    {        
+    void inOrder(Node<T> *nodePtr, int level = 0)
+    {
         if (nodePtr != NULL)
         {
-            ++level;            
+            ++level;
             inOrder(nodePtr->right, level);
             parent(level);
             cout << nodePtr->getSymbol() << " (" << nodePtr->code << ") " << endl;
@@ -667,7 +646,7 @@ public:
         }
     }
 
-    void preOrder(Node<T> * nodePtr, int level = 0)
+    void preOrder(Node<T> *nodePtr, int level = 0)
     {
         if (nodePtr != NULL)
         {
@@ -680,7 +659,7 @@ public:
         }
     }
 
-    void postOrder(Node<T> * nodePtr, int level = 0)
+    void postOrder(Node<T> *nodePtr, int level = 0)
     {
         if (nodePtr != NULL)
         {
@@ -691,7 +670,6 @@ public:
             cout << nodePtr->data << endl;
         }
     }
-   
 };
 
 #endif

@@ -1,7 +1,6 @@
 ///////////////////////////////////////////////////////////
 //  Inventory.h
 //  Implementation of the Class Inventory
-//  Created on:  11/15/2016
 //  Author: Robert T
 ///////////////////////////////////////////////////////////
 
@@ -84,23 +83,22 @@ private:
 	void deleteABook();
 
 protected:
-
 	int bookRow = 0;
 	const char delimiter = '|';
 	string dataFileName = "books.txt";
-	string **books;// = new string*[3];
+	string **books; // = new string*[3];
 	const int bookColumn = 8;
 
-    // Mutators
+	// Mutators
 	virtual void importDatafile();
 	void exportDatafile();
 	string *csv2arr(string);
-	void setBookArray(string**);
+	void setBookArray(string **);
 
-    // Accessors
-    string **getBookArray() const;
+	// Accessors
+	string **getBookArray() const;
 	void listBooks();
-	void showbook(string * book, bool showHeading);
+	void showbook(string *book, bool showHeading);
 
 public:
 	Inventory();
@@ -110,22 +108,22 @@ public:
 	// Virtual function for dynamic binding / overriding
 	virtual void menu();
 
-    int binarySearch(string**, string, int );
-    void selectionSort(string**, int);
-    string implode(string *, char);
-    int date2int(string );
+	int binarySearch(string **, string, int);
+	void selectionSort(string **, int);
+	string implode(string *, char);
+	int date2int(string);
 
 	// Accessors
-    string getAuthor(int subscript);
-    string getTitle(int subscript);
-    string getISBN(int subscript);
-    string getPublisher(int subscript);
-    string getDateAdded(int subscript);
-    string getQuantity(int subscript);
-    string getWhosleCost(int subscript);
-    string getRetailPrice(int subscript);
+	string getAuthor(int subscript);
+	string getTitle(int subscript);
+	string getISBN(int subscript);
+	string getPublisher(int subscript);
+	string getDateAdded(int subscript);
+	string getQuantity(int subscript);
+	string getWhosleCost(int subscript);
+	string getRetailPrice(int subscript);
 
-    // Mutators
+	// Mutators
 	void setAuthor(int subscript, string author);
 	void setTitle(int subscript, string title);
 	void setISBN(int subscript, string isbn);
@@ -138,9 +136,10 @@ public:
 	// Friend function
 	friend int main();
 
-    // Operator overloading - get a book from book array
-    string *operator[](int subscript){
-        return books[subscript];
-    }
+	// Operator overloading - get a book from book array
+	string *operator[](int subscript)
+	{
+		return books[subscript];
+	}
 };
 #endif

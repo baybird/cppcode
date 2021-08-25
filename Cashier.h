@@ -1,7 +1,6 @@
 ///////////////////////////////////////////////////////////
 //  Cashier.h
 //  Implementation of the Class Cashier
-//  Created on:  11/15/2016
 //  Author: Robert T
 ///////////////////////////////////////////////////////////
 
@@ -36,15 +35,14 @@
 // Friend function
 // friend int main();
 
-
 #ifndef _CRT_SECURE_NO_WARNING_CASHIER
 #define _CRT_SECURE_NO_WARNING_CASHIER
 #include "Inventory.h"
 class Cashier : public Inventory
 {
 private:
-	string ** purchased_books;
-	int purchased_books_row=0;
+	string **purchased_books;
+	int purchased_books_row = 0;
 
 	char book_isbn;
 	char book_title;
@@ -61,24 +59,26 @@ public:
 	Cashier();
 	virtual ~Cashier();
 
-    // Accessors
+	// Accessors
 	void menu();
 	void purchaseBooks();
-    void displayShopppingCart();
+	void displayShopppingCart();
 
-    // Template
+	// Template
 	template <class T>
 	T calculateTax(T subtotal);
 
 	// Exception
-	class InvalidSubtotal{};
+	class InvalidSubtotal
+	{
+	};
 
 	// Friend function
 	friend int main();
 
-    // Mutators
+	// Mutators
 	bool addBookToCart(string isbn, string quantity);
-    bool placeOrder();
-    void deleteMemory();
+	bool placeOrder();
+	void deleteMemory();
 };
 #endif

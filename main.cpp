@@ -1,8 +1,6 @@
 ///////////////////////////////////////////////////////////
 //  main.cpp
-//  Created on:  11/15/2016
 //  Author: Robert T
-//  IDE Used: Microsoft Visual Studio 2013
 ///////////////////////////////////////////////////////////
 #include <iostream>
 #include <fstream>
@@ -17,8 +15,6 @@
 #include "Inventory.h"
 #include "Report.h"
 
-
-
 using namespace std;
 
 int mainMenu()
@@ -27,12 +23,14 @@ int mainMenu()
 
 	cout << "*****************************************" << endl;
 	cout << " Booksellers" << endl;
-	cout << "       Main Menu        " << endl << endl;
+	cout << "       Main Menu        " << endl
+		 << endl;
 	cout << "1. Cashier Module" << endl;
 	cout << "2. Inventory Database Module" << endl;
 	cout << "3. Report Module" << endl;
-	cout << "4. Exit"  << endl;
-	cout << "*****************************************" << endl << endl;
+	cout << "4. Exit" << endl;
+	cout << "*****************************************" << endl
+		 << endl;
 
 	cout << "Enter Your Choice:";
 
@@ -43,35 +41,33 @@ int mainMenu()
 		cout << "Invalid choice, please enter a whole number:";
 	}
 
-
 	return choice;
 }
 
 void exportTree()
 {
-    // Encoding
-    string infile = "books.txt", outfile = "books.db";
+	// Encoding
+	string infile = "books.txt", outfile = "books.db";
 
-    PriorityQueue<char> Heap;
-    Heap.importDataFile(infile);
-    Heap.bubbleSort();
+	PriorityQueue<char> Heap;
+	Heap.importDataFile(infile);
+	Heap.bubbleSort();
 
-    // Build Huffman tree
-    HuffmanTree<char> tree;
-    tree.buildTreeFromHeap(Heap);
-    tree.encode(infile, outfile);
+	// Build Huffman tree
+	HuffmanTree<char> tree;
+	tree.buildTreeFromHeap(Heap);
+	tree.encode(infile, outfile);
 }
 
 void importTree()
 {
-    // Encoding
-    string infile = "books.db";
+	// Encoding
+	string infile = "books.db";
 
-    // Build Huffman tree
-    HuffmanTree<char> tree;
-    tree.importTree(infile);
+	// Build Huffman tree
+	HuffmanTree<char> tree;
+	tree.importTree(infile);
 }
-
 
 int main()
 {
@@ -79,13 +75,13 @@ int main()
 	int user_choise;
 
 	// Polymorphism
-	Inventory * baseObj;
+	Inventory *baseObj;
 	Cashier cashierObj;
 	Inventory inventoryObj;
 	Report reportObj;
 
-    //exportTree(); // Dump tree
-    importTree();
+	//exportTree(); // Dump tree
+	importTree();
 
 	do
 	{
@@ -94,11 +90,10 @@ int main()
 		{
 			user_choise = mainMenu();
 
-			if (user_choise < 1 || user_choise >4)
+			if (user_choise < 1 || user_choise > 4)
 			{
 				string error = "Invalid choice. Please re-enter.";
 				throw error;
-
 			}
 			else
 			{
@@ -128,7 +123,6 @@ int main()
 					system("pause");
 				}
 			}
-
 		}
 		catch (string exception)
 		{
@@ -136,7 +130,7 @@ int main()
 			system("pause");
 			system("cls");
 		}
-	} while (exit==false);
+	} while (exit == false);
 
 	return 0;
 }

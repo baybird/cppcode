@@ -1,7 +1,6 @@
 ///////////////////////////////////////////////////////////
 //  Report.cpp
 //  Implementation of the Class Report
-//  Created on:  11/15/2016
 //  Author: Robert T
 ///////////////////////////////////////////////////////////
 #include <iostream>
@@ -14,21 +13,24 @@
 
 using namespace std;
 
-Report::Report(){
-
+Report::Report()
+{
 }
 
-Report::~Report(){
-
+Report::~Report()
+{
 }
 
-void Report::inventoryList(){
+void Report::inventoryList()
+{
 	listBooks();
 	system("pause");
 }
 
-void Report::inventoryWholesaleValue(){
-	cout << setw(105) << "Listed by Wholesale Value" << endl << endl;
+void Report::inventoryWholesaleValue()
+{
+	cout << setw(105) << "Listed by Wholesale Value" << endl
+		 << endl;
 
 	cout << setw(15) << left << "ISBN";
 	cout << setw(70) << left << "Title";
@@ -42,27 +44,28 @@ void Report::inventoryWholesaleValue(){
 	cout << endl;
 	cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 
+	for (int i = 0; i < bookRow; i++)
+	{
 
-	for (int i = 0; i < bookRow; i++){
-
-		cout << setw(15) << left << getISBN(i); // ISBN
-		cout << setw(70) << left << getTitle(i); // Title
-		cout << setw(25) << left << getAuthor(i); // Author
-		cout << setw(25) << left << getPublisher(i); // Publisher
-		cout << setw(15) << left << getDateAdded(i); // Date added
-		cout << setw(10) << right << getQuantity(i); // Quantity
-		cout << setw(18) << right << getWhosleCost(i); // Wholesale cost
-		cout << setw(18) << right << getRetailPrice(i); // Retail price
+		cout << setw(15) << left << getISBN(i);										// ISBN
+		cout << setw(70) << left << getTitle(i);									// Title
+		cout << setw(25) << left << getAuthor(i);									// Author
+		cout << setw(25) << left << getPublisher(i);								// Publisher
+		cout << setw(15) << left << getDateAdded(i);								// Date added
+		cout << setw(10) << right << getQuantity(i);								// Quantity
+		cout << setw(18) << right << getWhosleCost(i);								// Wholesale cost
+		cout << setw(18) << right << getRetailPrice(i);								// Retail price
 		cout << setw(22) << right << stod(getQuantity(i)) * stod(getWhosleCost(i)); // Wholesale value
 		cout << endl;
-	}// end for
+	} // end for
 
 	system("pause");
 }
 
-
-void Report::inventoryRetailValue(){
-	cout << setw(105) << "Listed by Retail Value" << endl << endl;
+void Report::inventoryRetailValue()
+{
+	cout << setw(105) << "Listed by Retail Value" << endl
+		 << endl;
 
 	cout << setw(15) << left << "ISBN";
 	cout << setw(70) << left << "Title";
@@ -76,53 +79,56 @@ void Report::inventoryRetailValue(){
 	cout << endl;
 	cout << "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;
 
+	for (int i = 0; i < bookRow; i++)
+	{
 
-	for (int i = 0; i < bookRow; i++){
-
-		cout << setw(15) << left << getISBN(i); // ISBN
-		cout << setw(70) << left << getTitle(i); // Title
-		cout << setw(25) << left << getAuthor(i); // Author
-		cout << setw(25) << left << getPublisher(i); // Publisher
-		cout << setw(15) << left << getDateAdded(i); // Date added
-		cout << setw(10) << right << getQuantity(i); // Quantity
-		cout << setw(18) << right << getWhosleCost(i); // Wholesale cost
-		cout << setw(18) << right << getRetailPrice(i); // Retail price
+		cout << setw(15) << left << getISBN(i);										 // ISBN
+		cout << setw(70) << left << getTitle(i);									 // Title
+		cout << setw(25) << left << getAuthor(i);									 // Author
+		cout << setw(25) << left << getPublisher(i);								 // Publisher
+		cout << setw(15) << left << getDateAdded(i);								 // Date added
+		cout << setw(10) << right << getQuantity(i);								 // Quantity
+		cout << setw(18) << right << getWhosleCost(i);								 // Wholesale cost
+		cout << setw(18) << right << getRetailPrice(i);								 // Retail price
 		cout << setw(25) << right << stod(getRetailPrice(i)) * stod(getQuantity(i)); // Retail value
 		cout << endl;
-	}// end for
+	} // end for
 
 	system("pause");
 }
 
-
-void Report::listByQuantity(){
+void Report::listByQuantity()
+{
 	selectionSortByNumber(getBookArray(), 5);
 
-	cout << setw(105) << "Listed by Quantity" << endl << endl;
+	cout << setw(105) << "Listed by Quantity" << endl
+		 << endl;
 	listBooks();
 	system("pause");
 }
 
-
-void Report::listByCost(){
+void Report::listByCost()
+{
 	selectionSortByNumber(getBookArray(), 6);
 
-	cout << setw(105) << "Listed by Cost" << endl << endl;
+	cout << setw(105) << "Listed by Cost" << endl
+		 << endl;
 	listBooks();
 	system("pause");
 }
 
-
-void Report::listByAge(){
+void Report::listByAge()
+{
 	selectionSortByNumber(getBookArray(), 4);
 
-	cout << setw(105) << "Listed by Age" << endl << endl;
+	cout << setw(105) << "Listed by Age" << endl
+		 << endl;
 	listBooks();
 	system("pause");
 }
 
-
-void Report::menu(){
+void Report::menu()
+{
 	int choice;
 	bool exit = false;
 
@@ -131,7 +137,8 @@ void Report::menu(){
 		system("cls");
 		cout << "*****************************************" << endl;
 		cout << "         Secrendipity Booksellers        " << endl;
-		cout << "                   Reports               " << endl << endl;
+		cout << "                   Reports               " << endl
+			 << endl;
 		cout << "1. Inventory Listing" << endl;
 		cout << "2. Inventory Wholesale Value" << endl;
 		cout << "3. Inventory Retail Value" << endl;
@@ -139,7 +146,8 @@ void Report::menu(){
 		cout << "5. Inventory by Cost " << endl;
 		cout << "6. Inventory by Age " << endl;
 		cout << "7. Return to Main Menu " << endl;
-		cout << "*****************************************" << endl << endl;
+		cout << "*****************************************" << endl
+			 << endl;
 
 		cout << "Enter Your Choice:";
 		while (!(cin >> choice))
@@ -149,7 +157,8 @@ void Report::menu(){
 			cout << "Invalid choice, please enter a whole number:";
 		}
 
-		if (choice == 1){// Inventory Listing
+		if (choice == 1)
+		{ // Inventory Listing
 			inventoryList();
 		}
 		else if (choice == 2) // Inventory Wholesale Value
@@ -178,14 +187,12 @@ void Report::menu(){
 			exit = true;
 		}
 	} while (exit != true);
-
 }
 
-
-void Report::selectionSortByNumber(string** array, int column)
+void Report::selectionSortByNumber(string **array, int column)
 {
 	int minIndex, arrLength = bookRow;
-	string* minValue;
+	string *minValue;
 
 	for (int startScan = 0; startScan < arrLength; startScan++)
 	{
@@ -195,8 +202,9 @@ void Report::selectionSortByNumber(string** array, int column)
 		// Loop from startScan + 1
 		for (int index = startScan + 1; index < arrLength; index++)
 		{
-			if (column==4){// date
-				if (date2int(array[index][column]) < date2int(minValue[column]))// Compare number
+			if (column == 4)
+			{																	 // date
+				if (date2int(array[index][column]) < date2int(minValue[column])) // Compare number
 				{
 					//cout << "    " << array[index] << "<" << minValue << endl;
 
@@ -209,7 +217,7 @@ void Report::selectionSortByNumber(string** array, int column)
 			}
 			else
 			{
-				if (stod(array[index][column]) > stod(minValue[column]))// Compare number
+				if (stod(array[index][column]) > stod(minValue[column])) // Compare number
 				{
 					//cout << "    " << array[index] << "<" << minValue << endl;
 
@@ -220,7 +228,6 @@ void Report::selectionSortByNumber(string** array, int column)
 					minIndex = index;
 				}
 			}
-
 		}
 
 		// Swap values
